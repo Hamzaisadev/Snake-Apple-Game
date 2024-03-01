@@ -40,3 +40,74 @@ class snake:
 
 
     def up(self):
+      self.direction = "UP"
+      
+    def down(self):
+      self.direction = "DOWN"
+    
+    def left(self):
+      self.direction = "LEFT"
+  
+    def right(self):
+      self.direction = "RIGHT"
+      
+    def walk(self):
+      if self.direction == "UP":
+        self.y -= 5
+      elif self.direction == "DOWN":
+        self.y += 5
+      elif self.direction == "LEFT":
+        self.x -= 5
+      elif self.direction == "RIGHT":
+        self.x += 5
+      self.draw()
+      
+      
+
+
+
+
+
+
+
+# let's make a class of a game
+
+class game:
+    def __init__(self):
+      # let's initiate pygame
+      pygame.init()
+      # let's set the screen size
+      self.snake_game = pygame.display.set_mode((800, 600))
+      # let's give a background colour
+      self.snake_game.fill((26, 186, 71))
+# now I will create a snake in my snake class
+      self.snake = snake(self.snake_game,2)
+      self.snake.draw()
+
+
+  
+# let's make a run function
+  
+    def run(self):
+      running = True
+      while running:
+    # here I will make this running false by any event like pressing escape key this will turn the running variable to false hence the loop will stop and the app will be closed
+        for event in pygame.event.get():
+          if event.type == KEYDOWN:
+            if event.key == K_ESCAPE:
+              running = False
+            if event.key == K_UP:
+              self.snake.up()
+            if event.key == K_DOWN:
+              self.snake.down()
+            if event.key == K_LEFT:
+              self.snake.left()
+            if event.key == K_RIGHT:
+              self.snake.right()
+        self.snake.walk()
+        time.sleep(0.3)
+            
+if __name__ == "__main__":
+  game = game()
+  game.run()
+  
