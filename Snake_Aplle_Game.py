@@ -7,7 +7,7 @@ import random
 
 SIZE = 40
 DEFAULT_IMAGE_SIZE = (72, 72)
-APPLE_SIZE = (47, 52)
+APPLE_SIZE = (72, 72)
 # this is the class for the snake
 
 class Apple:
